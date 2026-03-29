@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template, Blueprint
 from flask_sqlalchemy import SQLAlchemy
-from flask import CORS
+from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 from config import Config
 import jwt
