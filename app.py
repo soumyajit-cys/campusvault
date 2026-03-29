@@ -146,8 +146,7 @@ def signup_page():
 
 @app.get("/sign_in.html")
 def signin_page():
-    # create sign_in.html later; placeholder for now
-    return "<h2>Sign In page — coming soon</h2>", 200
+    return render_template("sign_in.html")
 
 # ── DB init + run ──────────────────────────────────────────────────────────
 with app.app_context():
