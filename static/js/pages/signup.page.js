@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const name = document.getElementById("signup-name").value.trim();
     const email = document.getElementById("signup-email").value.trim();
     const password = document.getElementById("signup-password").value;
+    const college_id = document.getElementById("college-id").value.trim();
     const role = roleSelect.value;
     const facultyCode = facultyCodeInput.value.trim();
 
@@ -52,6 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (!isNotEmpty(password) || password.length < 6) {
       errorEl.textContent = "Password must be at least 6 characters.";
+      return;
+    }
+
+    if (!isNotEmpty(college_id)) {
+      errorEl.textContent = "Please enter your college ID.";
       return;
     }
 
@@ -72,8 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
     submitBtn.disabled = true;
 
     try {
-      // Backend expects: { name, email, password, role, faculty_code? }
-      const payload = { name, email, password, role };
+      // Backend expects: { name, email, password, role, college_id, faculty_code? }
+      const payload = { name, email, password, role, college_id };
       if (role === "faculty") payload.faculty_code = facultyCode;
 
       const res = await apiFetch("/auth/signup", {   // ✅ fixed endpoint
