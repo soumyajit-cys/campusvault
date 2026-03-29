@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CampusVault — Login</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/login.css') }}" />
+</head>
+<body>
+  <main class="cv-container cv-center">
+    <section class="cv-card cv-login-card" id="login-card" aria-labelledby="login-heading">
+
+      <img class="cv-logo" src="{{ url_for('static', filename='assets/logo.png') }}" alt="CampusVault logo" />
+      <h1 id="login-heading">CampusVault</h1>
+
+      <form id="login-form" class="cv-form" novalidate>
+
+        <!-- College / User ID  (matches id="siteid" the JS reads) -->
+        <label class="cv-field">
+          <span class="cv-label">User ID</span>
+          <input
+            id="siteid"
+            name="college_id"
+            type="text"
+            autocomplete="username"
+            placeholder="e.g. CS2024001"
+            required
+          />
+        </label>
+
+        <label class="cv-field">
+          <span class="cv-label">Password</span>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="••••••••"
+            required
+          />
+        </label>
+
+        <div class="cv-actions">
+          <button type="submit" class="cv-btn cv-btn-primary" style="width:100%">Login</button>
+        </div>
+      </form>
+
+      <p class="cv-small">Haven't registered? <a href="/signup">Sign Up Here</a></p>
+
+      <!-- Error banner (toggled via .active class in dom.js) -->
+      <div id="login-error" role="alert" class="cv-error" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- Page controller (all other imports are resolved by the module graph) -->
+  <script type="module" src="{{ url_for('static', filename='js/pages/login.page.js') }}"></script>
+</body>
+</html>
